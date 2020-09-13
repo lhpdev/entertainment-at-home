@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_162244) do
+ActiveRecord::Schema.define(version: 2020_09_13_174153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 2020_09_13_162244) do
     t.string "plot"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "purchase_options", force: :cascade do |t|
+    t.integer "purchasable_id", null: false
+    t.float "price"
+    t.string "video_quality"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "purchaseble_type"
+    t.bigint "purchaseble_id"
+    t.index ["purchasable_id"], name: "index_purchase_options_on_purchasable_id"
+    t.index ["purchaseble_type", "purchaseble_id"], name: "index_purchase_options_on_purchaseble_type_and_purchaseble_id"
   end
 
   create_table "seasons", force: :cascade do |t|
