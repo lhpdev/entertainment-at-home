@@ -5,4 +5,6 @@ class PurchaseOption < ApplicationRecord
   validates :price, :video_quality, presence: true
 
   scope :alive, -> { where("purchase_options.expires_at >= ?", DateTime.today) }
+
+  enum video_quality: { HD: 0, SD: 1 }
 end

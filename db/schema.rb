@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_184111) do
+ActiveRecord::Schema.define(version: 2020_09_13_220629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_09_13_184111) do
     t.integer "library_id"
     t.integer "purchasable_id"
     t.float "price"
-    t.string "video_quality"
+    t.integer "video_quality"
     t.datetime "expires_at", default: "2020-09-15 19:10:24", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
