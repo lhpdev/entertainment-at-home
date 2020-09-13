@@ -47,6 +47,8 @@ end
 
 group :test do
   gem 'factory_bot_rails'
+  gem 'database_cleaner-active_record'
+  gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
