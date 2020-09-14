@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_220629) do
+ActiveRecord::Schema.define(version: 2020_09_13_230812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,16 +41,14 @@ ActiveRecord::Schema.define(version: 2020_09_13_220629) do
 
   create_table "purchase_options", force: :cascade do |t|
     t.integer "library_id"
-    t.integer "purchasable_id"
     t.float "price"
     t.integer "video_quality"
-    t.datetime "expires_at", default: "2020-09-15 19:10:24", null: false
+    t.string "expires_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "purchaseble_type"
     t.bigint "purchaseble_id"
     t.index ["library_id"], name: "index_purchase_options_on_library_id"
-    t.index ["purchasable_id"], name: "index_purchase_options_on_purchasable_id"
     t.index ["purchaseble_type", "purchaseble_id"], name: "index_purchase_options_on_purchaseble_type_and_purchaseble_id"
   end
 
