@@ -5,6 +5,10 @@ Rails.application.routes.draw do
       get 'movies',  to: 'movies#index'
       get 'seasons', to: 'seasons#index'
       get 'medias',  to: 'medias#index'
+
+      resources :users do
+        resources :library, only: :index
+      end
     end
   end
 end
