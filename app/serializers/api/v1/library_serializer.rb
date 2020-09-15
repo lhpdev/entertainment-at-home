@@ -8,9 +8,9 @@ module Api
       end
 
       def serialize
-        return {} if @library.purchase_options.blank?
+        return {} if @library.contents.blank?
 
-        @library.purchase_options.alive.order(:expires_at)
+        @library.contents.alive.order(:expires_at)
       end
     end
   end
