@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
       resources :users do
         resources :library, only: :index
+        resources :purchases, only: :create
       end
     end
   end
