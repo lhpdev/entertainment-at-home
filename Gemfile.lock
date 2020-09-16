@@ -126,6 +126,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    interactor (3.1.2)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     listen (3.2.1)
@@ -238,6 +239,7 @@ DEPENDENCIES
   byebug
   database_cleaner-active_record
   factory_bot_rails
+  interactor (~> 3.0)
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
