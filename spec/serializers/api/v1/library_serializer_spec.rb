@@ -17,10 +17,8 @@ module Api
         end
 
         context 'when user has purchases' do
-          let(:movie_1) { create(:movie) }
-          let(:movie_2) { create(:movie) }
-          let!(:purchase_1) { create(:movie_purchase_option, library: user.library, purchaseble: movie_1, video_quality: :HD) }
-          let!(:purchase_2) { create(:movie_purchase_option, library: user.library, purchaseble: movie_2, video_quality: :HD) }
+          let!(:purchase_1) { create(:movie_purchase_option, library: user.library) }
+          let!(:purchase_2) { create(:movie_purchase_option, library: user.library) }
 
           it 'serializes movies correctly' do
             subject = described_class.new(user.library)
@@ -30,11 +28,8 @@ module Api
         end
 
         context 'when user has purchases close to expiration date' do
-          let(:movie_1) { create(:movie) }
-          let(:movie_2) { create(:movie) }
-
-          let!(:purchase_1) { create(:movie_purchase_option, library: user.library, purchaseble: movie_1, video_quality: :HD) }
-          let!(:purchase_2) { create(:movie_purchase_option, library: user.library, purchaseble: movie_2, video_quality: :HD) }
+          let!(:purchase_1) { create(:movie_purchase_option, library: user.library) }
+          let!(:purchase_2) { create(:movie_purchase_option, library: user.library) }
 
           before do
             purchase_2.update(expires_at: DateTime.current + 1.day)

@@ -3,6 +3,5 @@ FactoryBot.define do
     association :user
     created_at  { DateTime.current }
     updated_at  { DateTime.current }
-    created_at  { DateTime.current + 2.days }
   end
 end
