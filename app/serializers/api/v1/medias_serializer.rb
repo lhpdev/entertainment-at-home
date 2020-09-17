@@ -5,8 +5,8 @@ module Api
       attr_reader :seasons
 
       def initialize(movies = nil, seasons = nil)
-        @movies  = movies&.order(:created_at)
-        @seasons = seasons&.order(:created_at)
+        @movies  = movies
+        @seasons = seasons
       end
 
       def serialize

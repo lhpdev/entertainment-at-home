@@ -22,7 +22,7 @@ module Api
 
       def contents
         if @library
-          @library.contents.alive.includes(:purchaseble).order(:expires_at)
+          @library.cached_contents.sort_by{ |content| content[:expires_at] }
         end
       end
 

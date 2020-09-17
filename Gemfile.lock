@@ -110,6 +110,7 @@ GEM
     byebug (11.1.3)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    dalli (2.7.10)
     database_cleaner (1.8.5)
     database_cleaner-active_record (1.8.0)
       activerecord
@@ -237,6 +238,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  dalli (~> 2.7, >= 2.7.10)
   database_cleaner-active_record
   factory_bot_rails
   interactor (~> 3.0)

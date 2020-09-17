@@ -26,6 +26,14 @@ This is a simple Ruby on Rails REST API project to list Movies, Seasons and Epis
     ```
 
 * Services (job queues, cache servers, search engines, etc.)
+    For caching, this application is using memcached.
+
+    For installation info: https://memcached.org/downloads
+
+    On linux debian distributions:
+    ```sudo apt-get install memcached```
+
+    Start memcached: ```systemctl start memcached
 
 * Application Endpoints:
 

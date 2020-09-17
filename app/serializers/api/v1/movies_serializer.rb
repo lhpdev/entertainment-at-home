@@ -4,15 +4,17 @@ module Api
       attr_reader :movies
 
       def initialize(movies)
-        @movies = movies&.order(:created_at)
+        @movies = movies
       end
 
       def serialize
         return [] if @movies.blank?
 
-        @movies.map do |movie|
+        result = @movies.map do |movie|
           MovieSerializer.new(movie).serialize
         end
+
+        result.sort_by{ |movie| movie[:created_at] }
       end
     end
   end

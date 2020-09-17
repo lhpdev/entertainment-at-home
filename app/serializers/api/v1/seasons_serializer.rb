@@ -4,22 +4,24 @@ module Api
       attr_reader :seasons
 
       def initialize(seasons)
-        @seasons = seasons&.order(:created_at)
+        @seasons = seasons
       end
 
       def serialize
         return [] if @seasons.blank?
 
-        @seasons.map do |season|
+        result = @seasons.map do |season|
           SeasonSerializer.new(season).serialize
           .merge(
             {
-              episodes: season.episodes.order(:episode_number).map do |episode|
+              episodes: season.cached_episodes.sort_by{ |episode| episode.episode_number }.map do |episode|
                 EpisodeSerializer.new(episode).serialize
               end,
             }
           )
         end
+
+        result.sort_by{ |season| season[:created_at] }
       end
     end
   end

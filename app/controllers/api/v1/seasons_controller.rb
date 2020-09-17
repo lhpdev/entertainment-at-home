@@ -2,9 +2,9 @@ module Api
   module V1
     class SeasonsController < ActionController::Base
       def index
-        season = Season.all.includes(:episodes)
+        seasons = Season.all_cached
 
-        render json: { status: 200, data: SeasonsSerializer.new(season).serialize }, status: 200
+        render json: { status: 200, data: SeasonsSerializer.new(seasons.flatten).serialize }, status: 200
       end
     end
   end

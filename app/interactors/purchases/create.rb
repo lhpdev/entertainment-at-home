@@ -16,6 +16,7 @@ module Purchases
                                                        video_quality: params[:video_quality].to_sym)
             if purchase
               context.purchase = purchase
+              delete_users_library_cache(@user.id)
             else
               context.fail!(errors: purchase.errors.messages)
             end
@@ -53,6 +54,10 @@ module Purchases
         purchaseble_id: params[:purchaseble_id],
         purchaseble_type: params[:purchaseble_type]
       ).any?
+    end
+
+    def delete_users_library_cache(user_id)
+      Rails.cache.delete("User/#{user_id}/Library/Contents")
     end
   end
 end
