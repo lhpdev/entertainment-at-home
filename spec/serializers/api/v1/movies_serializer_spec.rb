@@ -7,10 +7,7 @@ module Api
         context 'when there is no movie' do
           context 'when there is no seasons nor movies' do
             it 'returns an empty object' do
-              movies  = Movie.all
-
-              subject = described_class.new(movies)
-
+              subject = described_class.new(nil)
               expect(subject.serialize).to eq({})
             end
           end
@@ -20,11 +17,28 @@ module Api
           let!(:movie_1) { create(:movie) }
           let!(:movie_2) { create(:movie) }
 
-          it 'serializes movies correctly' do
-            movies = Movie.all.order(:created_at)
-            subject = described_class.new(movies)
+          let(:movies) { Movie.all }
 
-            expect(subject.serialize).to eq(movies)
+          let(:serialized_movies) do
+            [
+              {
+                id: movie_1.id,
+                title: movie_1.title,
+                plot: movie_1.plot,
+                created_at: movie_1.created_at.strftime('%m/%d/%Y-%H:%M:%S')
+              },
+              {
+                id: movie_2.id,
+                title: movie_2.title,
+                plot: movie_2.plot,
+                created_at: movie_2.created_at.strftime('%m/%d/%Y-%H:%M:%S')
+              }
+            ]
+          end
+
+          it 'serializes movies correctly' do
+            subject = described_class.new(movies)
+            expect(subject.serialize).to eq(serialized_movies)
           end
         end
       end

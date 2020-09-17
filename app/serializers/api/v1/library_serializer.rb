@@ -8,9 +8,30 @@ module Api
       end
 
       def serialize
-        return {} if @library.contents.blank?
+        return {} if contents.blank?
 
-        @library.contents.alive.order(:expires_at)
+        result = contents.map do |content|
+          {
+            media: serialize_media(content.purchaseble),
+            expires_at: content.expires_at.to_time.strftime('%m/%d/%Y-%H:%M:%S')
+          }
+        end
+      end
+
+      private
+
+      def contents
+        if @library
+          @library.contents.alive.includes(:purchaseble).order(:expires_at)
+        end
+      end
+
+      def serialize_media(media)
+        if media.class.to_s == 'Movie'
+          MovieSerializer.new(media).serialize
+        else
+          SeasonSerializer.new(media).serialize
+        end
       end
     end
   end
