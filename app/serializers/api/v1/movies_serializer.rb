@@ -8,7 +8,7 @@ module Api
       end
 
       def serialize
-        return {} if @movies.blank?
+        return [] if @movies.blank?
 
         @movies.map do |movie|
           MovieSerializer.new(movie).serialize

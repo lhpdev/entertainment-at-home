@@ -10,10 +10,9 @@ module Api
       end
 
       def serialize
-        return {} if @movies.blank? && @seasons.blank?
         {
-          movies:  @movies ? MoviesSerializer.new(@movies).serialize : {},
-          seasons: @seasons ? @seasons&.map{ |season| SeasonSerializer.new(season).serialize } : {},
+          movies:  @movies ? MoviesSerializer.new(@movies).serialize : [],
+          seasons: @seasons ? @seasons&.map{ |season| SeasonSerializer.new(season).serialize } : [],
         }
       end
     end

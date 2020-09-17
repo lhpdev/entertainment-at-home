@@ -8,7 +8,7 @@ module Api
       end
 
       def serialize
-        return {} if @seasons.blank?
+        return [] if @seasons.blank?
 
         @seasons.map do |season|
           SeasonSerializer.new(season).serialize

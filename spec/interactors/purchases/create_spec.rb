@@ -28,7 +28,7 @@ module Purchases
 
         it 'fails' do
           expect(subject).to be_a_failure
-          expect(subject.errors).to eq(['user not found with id: 22'])
+          expect(subject.errors).to eq({ message: 'user not found with id: 22', status: 404 })
         end
       end
 
@@ -44,7 +44,7 @@ module Purchases
 
         it 'fails' do
           expect(subject).to be_a_failure
-          expect(subject.errors).to eq(['Movie not found with id: 22'])
+          expect(subject.errors).to eq({ message: 'Movie not found with id: 22', status: 404 })
         end
       end
 
@@ -53,7 +53,7 @@ module Purchases
           user.library.contents.create(purchaseble_id: movie.id, purchaseble_type: movie.class, video_quality: :HD)
 
           expect(subject).to be_a_failure
-          expect(subject.errors).to eq(["operation not allowed because there is an alive #{movie.class} with id: #{movie.id} in the library"])
+          expect(subject.errors).to eq({ message: "operation not allowed because there is an alive #{movie.class} with id: #{movie.id} in the library", status: 400 })
         end
       end
 

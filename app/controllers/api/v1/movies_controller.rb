@@ -4,11 +4,7 @@ module Api
       def index
         movies = Movie.all
 
-        if movies
-          render json: MoviesSerializer.new(movies).serialize, status: :ok
-        else
-          render json: { error: 'not found' }, status: :not_found
-        end
+        render json: { status: 200, data: MoviesSerializer.new(movies).serialize }, status: 200
       end
     end
   end

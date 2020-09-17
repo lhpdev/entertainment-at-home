@@ -10,7 +10,7 @@ module Api
           context 'when there is no seasons nor movies' do
             it 'returns an empty object' do
               subject = described_class.new(user.library)
-              expect(subject.serialize).to eq({})
+              expect(subject.serialize).to eq([])
             end
           end
         end

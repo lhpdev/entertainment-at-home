@@ -8,7 +8,7 @@ module Api
       end
 
       def serialize
-        return {} if @purchase.blank?
+        return [] if @purchase.blank?
 
         {
            id: @purchase.id,

@@ -8,7 +8,7 @@ module Api
       end
 
       def serialize
-        return {} if @movie.blank?
+        return [] if @movie.blank?
 
         {
            id: @movie.id,

@@ -5,11 +5,7 @@ module Api
         movies = Movie.all
         season = Season.all.includes(:episodes)
 
-        if movies || season
-          render json: MediasSerializer.new(movies, season).serialize, status: :ok
-        else
-          render json: { error: 'not found' }, status: :not_found
-        end
+        render json: { status: 200, data: MediasSerializer.new(movies, season).serialize }, status: 200
       end
     end
   end

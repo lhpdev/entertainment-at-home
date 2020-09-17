@@ -4,11 +4,7 @@ module Api
       def index
         season = Season.all.includes(:episodes)
 
-        if season
-          render json: SeasonsSerializer.new(season).serialize, status: :ok
-        else
-          render json: { error: 'not found' }, status: :not_found
-        end
+        render json: { status: 200, data: SeasonsSerializer.new(season).serialize }, status: 200
       end
     end
   end

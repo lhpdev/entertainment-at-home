@@ -20,15 +20,16 @@ module Purchases
               context.fail!(errors: purchase.errors.messages)
             end
           else
-            context.fail!(errors: [
-              "operation not allowed because there is an alive #{params[:purchaseble_type]} with id: #{params[:purchaseble_id]} in the library"]
+            context.fail!(errors: {
+              message: "operation not allowed because there is an alive #{params[:purchaseble_type]} with id: #{params[:purchaseble_id]} in the library",
+              status: 400 }
             )
           end
         else
-          context.fail!(errors: ["#{params[:purchaseble_type]} not found with id: #{params[:purchaseble_id]}"])
+          context.fail!(errors: { message: "#{params[:purchaseble_type]} not found with id: #{params[:purchaseble_id]}", status: 404 })
         end
       else
-        context.fail!(errors: ["user not found with id: #{params[:user_id]}"])
+        context.fail!(errors: { message: "user not found with id: #{params[:user_id]}", status: 404 })
       end
     end
 

@@ -5,10 +5,17 @@ module Api
     RSpec.describe MediasSerializer do
       describe '#serialize' do
         context 'when there is no seasons nor movies' do
+          let(:serialized_medias) do
+            {
+              movies: [],
+              seasons: []
+            }
+          end
+
           it 'returns empty object' do
             subject = described_class.new()
 
-            expect(subject.serialize).to eq({})
+            expect(subject.serialize).to eq(serialized_medias)
           end
         end
 
@@ -20,7 +27,7 @@ module Api
 
           let(:serialized_medias) do
             {
-              movies: {},
+              movies: [],
               seasons: [
                 {
                   id: season_1.id,
@@ -68,7 +75,7 @@ module Api
                   created_at: movie_2.created_at.strftime('%m/%d/%Y-%H:%M:%S'),
                 },
               ],
-              seasons: {}
+              seasons: []
             }
           end
 

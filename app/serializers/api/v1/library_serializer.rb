@@ -8,7 +8,7 @@ module Api
       end
 
       def serialize
-        return {} if contents.blank?
+        return [] if contents.blank?
 
         result = contents.map do |content|
           {
