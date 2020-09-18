@@ -50,14 +50,14 @@ module Api
               create(:movie_purchase_option, library: user.library, purchaseble: movie)
             end
 
-            it 'returns status not_found with correct error_message' do
+            it 'returns status not_found with correct error' do
               subject
 
               expect(response.status).to eq(400)
               expect(JSON.parse(response.body)).to eq({
                 'status' => 400,
                 'success' => false,
-                'error_message' => "operation not allowed because there is an alive Movie with id: 1 in the library"
+                'error' => "operation not allowed because there is an alive Movie with id: 1 in the library"
               })
             end
           end
@@ -71,14 +71,14 @@ module Api
               }
             }
 
-            it 'returns status not_found with correct error_message' do
+            it 'returns status not_found with correct error' do
               subject
 
               expect(response.status).to eq(404)
               expect(JSON.parse(response.body)).to eq({
                 'status' => 404,
                 'success' => false,
-                'error_message' => "user not found with id: 32"
+                'error' => "user not found with id: 32"
               })
             end
           end
@@ -92,14 +92,14 @@ module Api
               }
             }
 
-            it 'returns status not_found with correct error_message' do
+            it 'returns status not_found with correct error' do
               subject
 
               expect(response.status).to eq(404)
               expect(JSON.parse(response.body)).to eq({
                 'status' => 404,
                 'success' => false,
-                'error_message' => "Movie not found with id: 55"
+                'error' => "Movie not found with id: 55"
               })
             end
           end

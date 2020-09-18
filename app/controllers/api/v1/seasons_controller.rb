@@ -4,7 +4,11 @@ module Api
       def index
         seasons = Season.all_cached
 
-        render json: { status: 200, data: SeasonsSerializer.new(seasons.flatten).serialize }, status: 200
+        render json: {
+          status: 200,
+          data:   SeasonsSerializer.new(seasons).serialize
+        },
+        status: 200
       end
     end
   end

@@ -12,7 +12,7 @@ This is a simple Ruby on Rails REST API project to list Movies, Seasons and Epis
 * Configuration
     Run the command:
     ```
-    'bundle install
+    bundle install
     ```
 * Database setup
     To setup the database run the command:
@@ -33,7 +33,8 @@ This is a simple Ruby on Rails REST API project to list Movies, Seasons and Epis
     On linux debian distributions:
     ```sudo apt-get install memcached```
 
-    Start memcached: ```systemctl start memcached
+    Start memcached:
+    ```systemctl start memcached```
 
 * Application Endpoints:
 

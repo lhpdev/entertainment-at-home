@@ -5,7 +5,11 @@ module Api
         movies = Movie.all_cached
         season = Season.all_cached
 
-        render json: { status: 200, data: MediasSerializer.new(movies.flatten, season.flatten).serialize }, status: 200
+        render json: {
+          status: 200,
+          data:   MediasSerializer.new(movies, season).serialize
+        },
+        status: 200
       end
     end
   end

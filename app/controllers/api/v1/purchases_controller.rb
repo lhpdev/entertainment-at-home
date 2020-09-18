@@ -7,9 +7,19 @@ module Api
         result = Purchases::Create.call(params: permitted_params.merge({ user_id: params[:user_id] }))
 
         if result.success?
-          render json: { status: 201, success: true, data: PurchaseSerializer.new(result.purchase).serialize }, status: 201
+          render json: {
+            status:  201,
+            success: true,
+            data:    PurchaseSerializer.new(result.purchase).serialize
+          },
+          status: 201
         else
-          render json: { status: result.errors[:status], success: false, error_message: result.errors[:message] }, status: result.errors[:status]
+          render json: {
+            status:  result.errors[:status],
+            success: false,
+            error: result.errors[:message]
+          },
+          status: result.errors[:status]
         end
       end
 
